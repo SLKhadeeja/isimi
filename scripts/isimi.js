@@ -11,8 +11,8 @@ const addTheme = (holidayStyle) => {
 
 export function isimi(obj) {
     var d = new Date();
-    var currentDay = 31; //d.getDate()
-    var currentMonth = 9; //d.getMonth()
+    var currentDay = d.getDate();
+    var currentMonth = d.getMonth();
 
     const monthNames = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 
@@ -22,13 +22,30 @@ export function isimi(obj) {
 
         if (obj.holidays[i].day === undefined){
             switch (name) {
-                case "chrismas":
+                case "new year":
                     {
-                        if ( ( currentDay === 25 ) && ( currentMonth === monthNames.indexOf("december") ) ){
+                        if ( ( currentDay === 1 ) && ( currentMonth === monthNames.indexOf("january") ) ){
                             addTheme(obj.holidays[i].stylesheet);
                         }
                     }
                     break;
+
+                case "valentine":
+                    {
+                        if ( ( currentDay === 14 ) && ( currentMonth === monthNames.indexOf("february") ) ){
+                            addTheme(obj.holidays[i].stylesheet);
+                        }
+                    }
+                    break;
+
+                case "april fool":
+                    {
+                        if ( ( currentDay === 1 ) && ( currentMonth === monthNames.indexOf("april") ) ){
+                            addTheme(obj.holidays[i].stylesheet);
+                        }
+                    }
+                    break;
+
                 case "halloween":
                     {
                         if ( ( currentDay === 31 ) && ( currentMonth === monthNames.indexOf("october") ) ){
@@ -36,6 +53,15 @@ export function isimi(obj) {
                         }
                     }
                     break;
+
+                case "chrismas":
+                    {
+                        if ( ( currentDay === 25 ) && ( currentMonth === monthNames.indexOf("december") ) ){
+                            addTheme(obj.holidays[i].stylesheet);
+                        }
+                    }
+                    break;
+                
                 default:
                     return
             }

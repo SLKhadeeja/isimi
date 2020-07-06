@@ -1,0 +1,15 @@
+body{
+    background-color: rgb(39, 39, 34);
+}
+
+.a-div{
+    border-color: rgb(208, 255, 0)
+}
+
+h1 {
+    color: rgb(208, 255, 0);
+}
+
+h1::after{
+    content: "APRIL FOOL";
+}
