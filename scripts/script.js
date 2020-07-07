@@ -1,6 +1,44 @@
-import {isimi, addHoliday} from './isimi.mjs'
+import { isimi } from './isimi.js';
 
-addHoliday('october', 31, '../styles/halloween.css')
-addHoliday('december', 25, '../styles/chrismas.css')
+isimi({
+    holidays:[
+        {
+            name: "new year",
+            stylesheet: "../styles/newYear.css",
+        },
 
-isimi()
+        {
+            name: "valentine",
+            stylesheet: "../styles/valentine.css",
+        },
+
+        {
+            name: "april fool",
+            stylesheet: "../styles/aprilFool.css",
+        },
+
+        {
+            name: "halloween",
+            stylesheet: "../styles/halloween.css",
+        },
+
+        {
+            name: "chrismas",
+            stylesheet: "../styles/chrismas.css",
+        },
+
+        {
+            name: "birthday",
+            day: 14,
+            month: "january",
+            stylesheet: "../styles/birthday.css",
+        },
+
+        {
+            name: "today",
+            day: 6,
+            month: "july",
+            stylesheet: "../styles/today.css",
+        },
+    ],
+})

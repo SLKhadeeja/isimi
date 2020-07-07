@@ -15,4 +15,11 @@ body{
 h1 {
     font-size: 50px;
     color: black;
+    display: grid;
+}
+
+h1::after{
+    margin-top: 100px;
+    font-size: 40px;
+    text-align: center;
 }

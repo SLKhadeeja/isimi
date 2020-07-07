@@ -1,11 +1,15 @@
 body{
-    background-color: rgb(31, 85, 17);
+    background-color: rgb(77, 211, 44);
 }
 
 .a-div{
-    border-color: rgb(163, 36, 36)
+    border-color: rgb(102, 2, 2)
 }
 
 h1 {
-    color: rgb(163, 36, 36);
+    color: rgb(102, 2, 2);
+}
+
+h1::after{
+    content: "MERRY CHRISMAS";
 }
