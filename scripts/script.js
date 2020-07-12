@@ -36,7 +36,7 @@ isimi({
 
         {
             name: "today",
-            day: 6,
+            day: 12,
             month: "july",
             stylesheet: "../styles/today.css",
         },

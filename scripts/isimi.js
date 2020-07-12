@@ -8,69 +8,73 @@ const addTheme = (holidayStyle) => {
     head.appendChild(link);
 }
 
+const parse_month = (month) => {
+    const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    if (typeof(month) === "string"){
+        month = months.indexOf(month);
+    }
+
+    else 
+    if (typeof(month) === "number") {
+        if ( (month >= 1) && (month < 13) ) {
+            month = month - 1;
+        }
+        else {
+            console.error("Invalid month")
+        }
+    }
+
+    else {
+        console.error("Invalid month format")
+    }
+
+    return month;
+}
 
 export function isimi(obj) {
     var d = new Date();
     var currentDay = d.getDate();
     var currentMonth = d.getMonth();
 
-    const monthNames = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    obj.holidays.forEach(function(holiday){
+        if (holiday.day == undefined) {
+            switch (holiday.name) {
 
-    for( var i=0; i<obj.holidays.length; i++){
-
-        var name = obj.holidays[i].name;
-
-        if (obj.holidays[i].day === undefined){
-            switch (name) {
                 case "new year":
-                    {
-                        if ( ( currentDay === 1 ) && ( currentMonth === monthNames.indexOf("january") ) ){
-                            addTheme(obj.holidays[i].stylesheet);
-                        }
-                    }
+                    holiday.day = 1
+                    holiday.month = 1
                     break;
 
                 case "valentine":
-                    {
-                        if ( ( currentDay === 14 ) && ( currentMonth === monthNames.indexOf("february") ) ){
-                            addTheme(obj.holidays[i].stylesheet);
-                        }
-                    }
+                    holiday.day = 14
+                    holiday.month = 2
                     break;
 
                 case "april fool":
-                    {
-                        if ( ( currentDay === 1 ) && ( currentMonth === monthNames.indexOf("april") ) ){
-                            addTheme(obj.holidays[i].stylesheet);
-                        }
-                    }
+                    holiday.day = 1
+                    holiday.month = 4
                     break;
 
                 case "halloween":
-                    {
-                        if ( ( currentDay === 31 ) && ( currentMonth === monthNames.indexOf("october") ) ){
-                            addTheme(obj.holidays[i].stylesheet);
-                        }
-                    }
+                    holiday.day = 31
+                    holiday.month = 10
                     break;
 
                 case "chrismas":
-                    {
-                        if ( ( currentDay === 25 ) && ( currentMonth === monthNames.indexOf("december") ) ){
-                            addTheme(obj.holidays[i].stylesheet);
-                        }
-                    }
+                    holiday.day = 25
+                    holiday.month = 12
                     break;
-                
+
                 default:
-                    return
+                console.error("Invalid Config for Holiday", holiday)
+                return // For failed config return
             }
         }
 
-        else {
-            if ( ( currentDay === obj.holidays[i].day ) && ( currentMonth === monthNames.indexOf(obj.holidays[i].month) ) ){
-                addTheme(obj.holidays[i].stylesheet);
-            }
+        // Check the date for matching 
+        if (( currentDay === holiday.day ) && ( currentMonth === parse_month(holiday.month) )){
+            addTheme(holiday.stylesheet)
         }
-    }
+    })
+
 }
