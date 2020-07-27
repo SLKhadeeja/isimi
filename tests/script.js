@@ -6,6 +6,17 @@ isimi({
       month: 7,
       stylesheet: "/tests/styles/today.css"
     },
+    {
+      startDate: {
+        day: 24,
+        month: 7,
+      },
+      stopDate: {
+        day: 28,
+        month: 7,
+      },
+      stylesheet: "/tests/styles/aprilFool.css"
+    },
 
     {
       startDate: {
@@ -17,18 +28,6 @@ isimi({
         month: 7,
       },
       stylesheet: "/tests/styles/birthday.css"
-    },
-
-    {
-      startDate: {
-        day: 24,
-        month: 7,
-      },
-      stopDate: {
-        day: 28,
-        month: 7,
-      },
-      stylesheet: "/tests/styles/aprilFool.css"
     },
 
     {
