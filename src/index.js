@@ -47,11 +47,24 @@ export function isimi(obj) {
 
   obj.holidays.forEach((holiday) => {
     if (holiday.day === undefined || holiday.month === undefined) {
-      const selectedHoliday = popularHolidays[holiday.name.toLowerCase()];
-      if (selectedHoliday === undefined) {
-        throw new Error(`Invalid Config for Holiday ${holiday}`);
+      if( (holiday.startDate === undefined) || (holiday.stopDate === undefined) ) {
+        throw new Error("Missing start date or stop date");
       }
-      holiday = selectedHoliday;
+      if ((holiday.startDate !== undefined) && (holiday.stopDate !== undefined)) {
+        var [startDay, stopDay] = [holiday.startDate.day, holiday.stopDate.day];
+        var [startMonth, stopMonth] = [holiday.startDate.month, holiday.stopDate.month];
+        if ( ((currentDay === startDay) && (currentMonth === parseMonth(startMonth))) || ((currentDay <= stopDay) && (currentMonth <= parseMonth(stopMonth))) ) {
+          addTheme(holiday.stylesheet);
+        }
+      } else {
+          const selectedHoliday = popularHolidays[holiday.name.toLowerCase()];
+          if (selectedHoliday === undefined) {
+            throw new Error(`Invalid Config for Holiday ${holiday}`);
+          }
+          // holiday = selectedHoliday;
+          holiday.day = selectedHoliday.day;
+          holiday.month = selectedHoliday.month;
+      }
     }
 
     // Check the date for matching
