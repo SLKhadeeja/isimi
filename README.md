@@ -55,7 +55,7 @@ isimi also supports calling popular holidays by name
 
 ### Holiday names isimi understands
 
-``` "chrismas"```
+``` "christmas"```
 ``` "halloween"```
 ``` "aprilfool"```
 

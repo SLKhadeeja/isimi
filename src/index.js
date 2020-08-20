@@ -47,9 +47,6 @@ export function isimi(obj) {
 
   obj.holidays.forEach((holiday) => {
     if (holiday.day === undefined || holiday.month === undefined) {
-      if( (holiday.startDate === undefined) || (holiday.stopDate === undefined) ) {
-        throw new Error("Missing start date or stop date");
-      }
       if ((holiday.startDate !== undefined) && (holiday.stopDate !== undefined)) {
         var [startDay, stopDay] = [holiday.startDate.day, holiday.stopDate.day];
         var [startMonth, stopMonth] = [holiday.startDate.month, holiday.stopDate.month];
