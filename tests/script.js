@@ -3,29 +3,29 @@ isimi({
   holidays: [
     {
       day: 21,
-      month: 7,
+      month: "august",
       stylesheet: "/tests/styles/today.css"
     },
     {
       startDate: {
-        day: 24,
-        month: 7,
+        day: 20,
+        month: 9,
       },
       stopDate: {
         day: 28,
-        month: 7,
+        month: 9,
       },
       stylesheet: "/tests/styles/aprilFool.css"
     },
 
     {
       startDate: {
-        day: 14,
-        month: 7,
+        day: 21,
+        month: 10,
       },
       stopDate: {
-        day: 20,
-        month: 7,
+        day: 22,
+        month: 10,
       },
       stylesheet: "/tests/styles/birthday.css"
     },

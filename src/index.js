@@ -40,33 +40,64 @@ const parseMonth = (month) => {
   return month;
 };
 
+const validateName = (holiday) => {
+  const selectedHoliday = popularHolidays[holiday.name.toLowerCase()];
+    if (selectedHoliday === undefined) {
+        throw new Error(`Invalid Config for Name Holiday ${holiday}`);
+    }
+  return {
+    day: selectedHoliday.day,
+    month: selectedHoliday.month,
+    stylesheet: holiday.stylesheet
+  }
+};
+
+const validateDayMonth = (holiday) => {
+  if (holiday.day > 31) {
+    throw new Error('Invalid Day specified');
+  }
+  return holiday
+};
+
+const validateStartStopDate = (holiday, currentDay, currentMonth) => {
+  const [startDate, stopDate] = [holiday.startDate, holiday.stopDate];
+  if ((startDate == undefined && stopDate !== undefined) || (stopDate == undefined && startDate != undefined) ){
+    throw new Error("Start and Stop Date must be specified")
+  }
+  if (((currentDay === startDate.day) && (currentMonth === parseMonth(startDate.month))) || (currentDay <= stopDate.day) && (currentMonth <= parseMonth(stopDate.month))) {
+        return {
+          day: currentDay,
+          month: startDate.month,
+          stylesheet: holiday.stylesheet
+        }
+  }
+  else{
+    return holiday
+  }
+}
+
 export function isimi(obj) {
   const d = new Date();
   const currentDay = d.getDate();
   const currentMonth = d.getMonth();
 
   obj.holidays.forEach((holiday) => {
-    if (holiday.day === undefined || holiday.month === undefined) {
-      if ((holiday.startDate !== undefined) && (holiday.stopDate !== undefined)) {
-        var [startDay, stopDay] = [holiday.startDate.day, holiday.stopDate.day];
-        var [startMonth, stopMonth] = [holiday.startDate.month, holiday.stopDate.month];
-        if ( ((currentDay === startDay) && (currentMonth === parseMonth(startMonth))) || ((currentDay <= stopDay) && (currentMonth <= parseMonth(stopMonth))) ) {
-          addTheme(holiday.stylesheet);
-        }
-      } else {
-          const selectedHoliday = popularHolidays[holiday.name.toLowerCase()];
-          if (selectedHoliday === undefined) {
-            throw new Error(`Invalid Config for Holiday ${holiday}`);
-          }
-          // holiday = selectedHoliday;
-          holiday.day = selectedHoliday.day;
-          holiday.month = selectedHoliday.month;
-      }
+    let selectedHoliday;
+    if (holiday.day !== undefined) {
+      selectedHoliday = validateDayMonth(holiday)
     }
 
-    // Check the date for matching
-    if (currentDay === holiday.day && currentMonth === parseMonth(holiday.month)) {
-      addTheme(holiday.stylesheet);
+    if (holiday.startDate !== undefined || holiday.stopDate !== undefined) {
+      selectedHoliday = validateStartStopDate(holiday, currentDay, currentMonth)
+      
+    }
+
+    if ((selectedHoliday === undefined) && (holiday.name !== undefined)){
+      selectedHoliday = validateName(holiday)
+    }
+
+    if (currentDay === selectedHoliday.day && currentMonth === parseMonth(selectedHoliday.month)) {
+      addTheme(selectedHoliday.stylesheet);
     }
   });
 }
