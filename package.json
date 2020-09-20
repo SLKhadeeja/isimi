@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pandelytics/isimi.git"
+    "url": "git+https://github.com/SLKhadeeja/isimi.git"
   },
   "keywords": [
     "holiday",
@@ -20,9 +20,9 @@
   "author": "Khadija Ladan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Pandelytics/isimi/issues"
+    "url": "https://github.com/SLKhadeeja/isimi/issues"
   },
-  "homepage": "https://github.com/Pandelytics/isimi#readme",
+  "homepage": "https://github.com/SLKhadeeja/isimi#readme",
   "devDependencies": {
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.5.0",
@@ -34,6 +34,6 @@
   "dependencies": {
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@isimi"
+    "registry": "https://npm.pkg.github.com/SLKhadeeja/@isimi"
   }
 }
