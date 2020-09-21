@@ -1,5 +1,5 @@
 {
-  "name": "@SLKhadeeja/isimi",
+  "name": "isimi",
   "version": "1.0.0",
   "description": "A package to help you manage your app appearance for different holidays/celebrations",
   "main": "./src/index.js",
@@ -9,7 +9,10 @@
     "build": "webpack --mode development --config webpack-config.js",
     "build --watch": "webpack --mode development --config webpack-config.js --watch"
   },
-  "repository": "git://github.com/slkhadeeja/isimi.git",
+  "repository": {
+      "type": "git",
+      "url": "git://github.com/slkhadeeja/isimi.git"
+  },
   "keywords": [
     "holiday",
     "celebration"
@@ -29,8 +32,5 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   }
 }
