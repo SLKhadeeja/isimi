@@ -4,10 +4,10 @@ A package to help seamlessly integrate different holidays into your webapp.
 
 ## Installation
 
-- Install Yarn
+- Install with Yarn
 
 ```bash
-   yarn install isimi
+   yarn add isimi
 ```
 
 ## Usage
