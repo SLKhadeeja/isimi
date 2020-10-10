@@ -4,7 +4,7 @@
   "description": "A package to help you manage your app appearance for different holidays/celebrations",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Warn: no test specified\"",
     "lint": "eslint .",
     "build": "webpack --mode development --config webpack-config.js",
     "build --watch": "webpack --mode development --config webpack-config.js --watch"
@@ -17,7 +17,7 @@
     "holiday",
     "celebration"
   ],
-  "author": "Khadija Ladan",
+  "author": "Khadija Ladan <khadijaladan67@gmail.com> (https://deedee.netlify.app)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/SLKhadeeja/isimi/issues"
