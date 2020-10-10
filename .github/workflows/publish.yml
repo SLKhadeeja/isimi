@@ -1,6 +1,6 @@
 name: Publish
 on: 
-  push:
+  release:
     branches:
         - master
 jobs:
@@ -18,3 +18,4 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           auth-token: ${{ secrets.NPM_TOKEN }}
+          cmd: publish
